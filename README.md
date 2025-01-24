@@ -27,4 +27,3 @@ https://www.scrumpoker-online.org/de/
    
 Im Backend sollen die Daten in einer Light SQL also Datei gespeichert werden. Dazu soll SQL verwendet werden (für einfache Daten gerne auch Dateien).
 Die Webseite soll in PHP / HTML geschrieben sein. Es steht dir frei jede Art von Framework oder Vorlage zu verwenden. KISS Prinzip ist anzuwenden. Es soll das MVP „minimal brauchbares oder existenzfähiges Produkt“ gebaut werden in dem man die Ansätze der REST API sowie der Anbindung das Frontend erkennen kann.
-![image](https://github.com/user-attachments/assets/f8f2d95b-c945-4178-9723-1813840962bd)
