@@ -1,0 +1,19 @@
+{
+    "name": "nscc/pprscpr",
+    "description": "nexxtra small code challenge",
+    "require": {
+        "symfony/routing": "^7.2",
+        "symfony/http-foundation": "^7.2"
+    },
+    "autoload": {
+        "psr-4": {
+            "Nscc\\": "src/",
+            "App\\": "app/"
+        }
+    },
+    "authors": [
+        {
+            "name": "jw"
+        }
+    ]
+}
