@@ -38,9 +38,5 @@ class Rooms extends AbstractController
         ]);
     }
 
-    private function getAllRooms () {
-        return $this->pokerRoom->getAll();
-    }
-
 
 }

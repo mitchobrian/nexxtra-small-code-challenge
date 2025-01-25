@@ -38,7 +38,7 @@ echo View::bodyOpen();
                         <label for="room_name">Room Name</label>
                     </div>
                     <div class="form-floating mb-3">
-                        <input type="submit" name="room_submit" value="create new room">
+                        <input type="submit" class="btn btn-primary" name="room_submit" value="create new room">
                     </div>
                 </form>
             </div>

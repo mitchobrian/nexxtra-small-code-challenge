@@ -28,7 +28,39 @@ echo View::bodyOpen();
         </div>
         <div class="row">
             <div class="col-6">
-
+                <?php if (!empty($c->selected_card)) {
+                    ?>
+                    <div>
+                        You have selected the card <?= $c->selected_card ?>
+                    </div>
+                    <div>
+                        Waiting for other users ... (polling mode via js)
+                    </div>
+                    <?php
+                }
+                else {
+                    ?>
+                    <form id="rooms-form" method="post" action="/room?id=<?= $c->roomId ?>">
+                        choose a card
+                        <div class="form-floating mb-3">
+                            <select class="form-select" id="sel_card" name="sel_card" aria-label="Select Card">
+                                <?php
+                                foreach ($c->pokerCard->card_options as $index => $card) {
+                                    ?>
+                                    <option value="<?= $index ?>"><?= $card ?></option>
+                                    <?php
+                                }
+                                ?>
+                            </select>
+                            <label for="sel_card">Select Card</label>
+                        </div>
+                        <div class="form-floating mb-3">
+                            <input type="submit" class="btn btn-primary" name="card_submit" value="submit card">
+                        </div>
+                    </form>
+                    <?php
+                }
+                ?>
             </div>
             <div class="col-6">
 
