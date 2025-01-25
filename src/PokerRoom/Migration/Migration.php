@@ -13,7 +13,6 @@ class Migration extends Migrator
         "CREATE TABLE IF NOT EXISTS poker_room (
                 id INTEGER PRIMARY KEY AUTOINCREMENT,
                 room_name TEXT NOT NULL UNIQUE,
-                email TEXT NOT NULL UNIQUE,
                 created_at DATETIME DEFAULT CURRENT_TIMESTAMP
     )";
 }

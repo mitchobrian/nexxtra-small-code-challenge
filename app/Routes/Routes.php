@@ -40,6 +40,18 @@ class Routes
             }
         ]));
 
+        $routes->add('room', new Route('/room', [
+            '_controller' => function (Request $request) {
+                // Load the content of the home.php view
+                ob_start();
+                include __DIR__ . '/../View/Room.php';
+                $content = ob_get_clean();
+
+                // Return the content as a Response object
+                return new Response($content);
+            }
+        ]));
+
         $request = Request::createFromGlobals();
         $context = new RequestContext();
         $context->fromRequest($request);
