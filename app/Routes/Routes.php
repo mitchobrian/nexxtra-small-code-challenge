@@ -14,15 +14,25 @@ class Routes
 
     public static function initRoutes()
     {
-        // Create a route collection
-        $routes = new RouteCollection();
 
-        // Define routes and their callbacks
+        $routes = new RouteCollection();
         $routes->add('home', new Route('/', [
             '_controller' => function (Request $request) {
                 // Load the content of the home.php view
                 ob_start();
                 include __DIR__ . '/../View/Home.php';
+                $content = ob_get_clean();
+
+                // Return the content as a Response object
+                return new Response($content);
+            }
+        ]));
+
+        $routes->add('rooms', new Route('/rooms', [
+            '_controller' => function (Request $request) {
+                // Load the content of the home.php view
+                ob_start();
+                include __DIR__ . '/../View/Rooms.php';
                 $content = ob_get_clean();
 
                 // Return the content as a Response object

@@ -3,7 +3,7 @@ namespace App\View;
 use App\Controller\Home;
 use Nscc\Core\View\View;
 $c = new Home();
-echo View::header("Scrum Poker Board - Home");
+echo View::header("Scrum Poker Board - Room");
 echo View::bodyOpen();
 ?>
 <style>
@@ -20,7 +20,7 @@ echo View::bodyOpen();
         </div>
         <div class="row">
             <div class="col-6">
-                <a href="/rooms" class="btn btn-primary">
+                <a href="" class="btn btn-primary">
                     lets go to the rooms !
                 </a>
             </div>
