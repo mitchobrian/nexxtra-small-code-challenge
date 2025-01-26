@@ -4,19 +4,23 @@ namespace App\Controller;
 
 use Nscc\Core\Controller\AbstractController;
 use Nscc\PokerRoom\PokerRoom;
+use Nscc\PokerUser\PokerUser;
 use Symfony\Component\HttpFoundation\Request;
 
 class Rooms extends AbstractController
 {
 
     private PokerRoom $pokerRoom;
+    public Pokeruser $pokerUser;
 
     public array $all_rooms = [];
 
     public function init () {
         try {
             $this->pokerRoom = new PokerRoom();
-            $this->onSubmit();
+            $this->pokerUser = new PokerUser();
+            $this->onSubmitRoom();
+            $this->onSubmitName();
             $this->all_rooms = $this->pokerRoom->getAll();
         }
         catch (\Exception $e) {
@@ -26,7 +30,7 @@ class Rooms extends AbstractController
         }
     }
 
-    private function onSubmit (): void {
+    private function onSubmitRoom (): void {
         $request = Request::createFromGlobals();
         $action = $request->get('room_submit');
         $room_name = $request->get('room_name');
@@ -36,6 +40,20 @@ class Rooms extends AbstractController
         $this->pokerRoom->insert([
             'room_name' => $room_name
         ]);
+    }
+
+    private function onSubmitName (): void {
+        $request = Request::createFromGlobals();
+        $action = $request->get('name_submit');
+        $name = $request->get('user_name');
+
+        if (empty($action) || empty($name)) return;
+
+
+        if (!$this->pokerUser->isUserNameSet()) {
+            $this->pokerUser->setUserName($name);
+        }
+
     }
 
 

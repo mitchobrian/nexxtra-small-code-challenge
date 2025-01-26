@@ -2,7 +2,7 @@
 namespace App\View;
 use App\Controller\Rooms;
 use Nscc\Core\View\View;
-use PokerRoomObj;
+use PokerRoomSessionObj;
 
 $c = new Rooms();
 $c->init();
@@ -41,8 +41,34 @@ echo View::bodyOpen();
                         <input type="submit" class="btn btn-primary" name="room_submit" value="create new room">
                     </div>
                 </form>
+
+                <?php if (!$c->pokerUser->isUserNameSet()) { ?>
+                    <form id="name-form" method="post" action="/rooms">
+                        <div class="form-floating mb-3">
+                            <input type="text" class="form-control" id="user_name" name="user_name" placeholder="User Name">
+                            <label for="user_name">User Name</label>
+                        </div>
+                        <div class="form-floating mb-3">
+                            <input type="submit" class="btn btn-primary" name="name_submit" value="submit name">
+                        </div>
+                    </form>
+                <?php }
+                else {
+                    ?>
+                        <div>
+                            <label>
+                                Username: <?= $c->pokerUser->getUserName() ?>
+                            </label>
+
+                        </div>
+                    <?
+                }
+                ?>
+
             </div>
 
+
+            <?php if ($c->pokerUser->isUserNameSet()) { ?>
             <div class="col-8 rooms-list">
                 <div>
                     Available Rooms
@@ -62,6 +88,15 @@ echo View::bodyOpen();
                     ?>
                 </div>
             </div>
+            <?php }
+            else {
+                ?>
+                <div class="col-8 rooms-list">
+                    <div> please set username first to enter a room</div>
+                </div>
+                <?php
+            }
+            ?>
         </div>
     </div>
 </section>

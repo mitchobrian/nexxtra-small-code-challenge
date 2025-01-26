@@ -5,8 +5,8 @@ include __DIR__ . '/vendor/autoload.php';
 use Symfony\Component\ErrorHandler\Debug;
 use Symfony\Component\ErrorHandler\ErrorHandler;
 use Symfony\Component\ErrorHandler\DebugClassLoader;
-use \Nscc\PokerUser\Migration\Migration as PokerUserMigration;
 use Nscc\PokerRoom\Migration\Migration as PokerRoomMigration;
+use Nscc\PokerRoomSession\Migration\Migration as PokerRoomSessionMigration;
 
 ///////////////////////////////////////////////////////////////
 /// DEBUG
@@ -15,8 +15,15 @@ Debug::enable();
 ///////////////////////////////////////////////////////////////
 /// MIGRATION
 ///
-new PokerUserMigration()->migrate();
 new PokerRoomMigration()->migrate();
+new PokerRoomSessionMigration()->migrate();
+
+///////////////////////////////////////////////////////////////
+/// SESSION
+///
+if (session_status() === PHP_SESSION_NONE) {
+    session_start();
+}
 
 ///////////////////////////////////////////////////////////////
 /// ROUTES
