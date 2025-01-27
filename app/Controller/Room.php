@@ -39,7 +39,7 @@ class Room extends AbstractController
         }
         catch (\Exception $e) {
             // todo: log $e->getMessage();
-            dump("something went wrong" . $e->getMessage() . $e->getTraceAsString());
+            //dump("something went wrong" . $e->getMessage() . $e->getTraceAsString());
             exit();
         }
     }

@@ -10,6 +10,47 @@ echo View::header("Scrum Poker Board - Room");
 echo View::bodyOpen();
 ?>
 <style>
+    .card {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        box-shadow: 2px 2px 8px black;
+        border-radius: 15px;
+        height: 200px;
+        width: 150px;
+        padding: 10px;
+        animation: 1s ease-out 0s 1 turnCard;
+
+        & .card-inner {
+            padding: 1rem;
+            border: 1px solid #b0b0b0;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            width: 100%;
+            height: 100%;
+            border-radius: 5px;
+        }
+
+        & .number {
+            font-size: 40px;
+            font-weight: 500;
+        }
+
+
+    }
+
+    @keyframes turnCard {
+        from {
+            transform: rotateY(0);
+        }
+        to {
+            transform: rotateY(360deg);
+        }
+
+    }
+
+
 
 </style>
 <section>
@@ -31,12 +72,16 @@ echo View::bodyOpen();
             <div class="col-6">
                 <?php if (!empty($c->selected_card)) {
                     ?>
-                    <div>
-                        You have selected the card <?= $c->pokerCard->card_options[$c->selected_card] ?? "" ?>
-                    </div>
-                    <div>
-                        Waiting for other users ... (polling mode via js)
-                    </div>
+                        <div class="card mb-3">
+                            <div class="card-inner">
+                                <div class="number">
+                                    <?= $c->pokerCard->card_options[$c->selected_card] ?? "" ?>
+                                </div>
+                            </div>
+                        </div>
+                        <div>
+                            You have selected the card <?= $c->pokerCard->card_options[$c->selected_card] ?? "" ?>
+                        </div>
                     <?php
                 }
                 else {
@@ -114,7 +159,7 @@ echo View::bodyOpen();
         },
 
         intervalRefresh () {
-            if (this.cardIsSelected) {
+            if (false && this.cardIsSelected) {
                 setTimeout(()=> {
                     window.location.href = "/room?id=" + roomId
                 }, 10000)
