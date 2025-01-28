@@ -159,7 +159,7 @@ echo View::bodyOpen();
         },
 
         intervalRefresh () {
-            if (false && this.cardIsSelected) {
+            if (this.cardIsSelected) {
                 setTimeout(()=> {
                     window.location.href = "/room?id=" + roomId
                 }, 10000)
