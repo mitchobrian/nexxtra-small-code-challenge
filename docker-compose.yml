@@ -1,0 +1,18 @@
+version: '3'
+services:
+  apache:
+    image: code_challenge
+    volumes:
+      - ./:/var/www/html
+    ports:
+      - "80:80"
+    networks:
+      - app-network
+    restart: always
+
+networks:
+  app-network:
+    driver: bridge
+
+volumes:
+  sqlite-data:
